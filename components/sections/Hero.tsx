@@ -34,7 +34,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom text-center text-white pt-32">
+      <div className="relative z-10 container-custom text-center text-white pt-32 pb-28">
         <motion.div
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
           animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
