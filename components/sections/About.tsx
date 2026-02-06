@@ -38,7 +38,7 @@ export function About() {
   }, []);
 
   return (
-    <section id="about" className="section-padding bg-secondary/30">
+    <section id="about" className="section-padding bg-secondary/30 overflow-hidden">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Side */}

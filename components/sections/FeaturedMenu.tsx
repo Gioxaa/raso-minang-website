@@ -11,7 +11,7 @@ import { FEATURED_DISHES, formatPrice } from "@/lib/constants";
 
 export function FeaturedMenu() {
   return (
-    <section id="menu" className="section-padding">
+    <section id="menu" className="section-padding overflow-hidden">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -33,7 +33,7 @@ export function FeaturedMenu() {
         </motion.div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {FEATURED_DISHES.map((dish, index) => (
             <motion.div
               key={dish.id}

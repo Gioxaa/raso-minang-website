@@ -68,10 +68,10 @@ export default function MenuPage() {
             className="w-full"
           >
             {/* Scrollable tabs wrapper - extends to edges on mobile */}
-            <div className="relative -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="relative -mx-4 px-4 md:mx-0 md:px-0 overflow-hidden">
               {/* Scroll indicator - fade effect on right edge */}
               <div className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 md:hidden" aria-hidden="true" />
-              <TabsList className="flex justify-start gap-2 bg-transparent h-auto mb-8 md:mb-12 overflow-x-auto no-scrollbar whitespace-nowrap pb-2 scroll-smooth">
+              <TabsList className="flex justify-start gap-2 bg-transparent h-auto mb-8 md:mb-12 overflow-x-auto no-scrollbar whitespace-nowrap pb-2 scroll-smooth w-full">
                 <TabsTrigger
                   value="all"
                   className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-4 md:px-6 py-2.5 shrink-0 min-h-[44px]"
@@ -121,7 +121,7 @@ export default function MenuPage() {
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                           {/* Badges */}
-                          <div className="absolute top-3 left-3 flex gap-2">
+                          <div className="absolute top-3 left-3 flex flex-wrap gap-1">
                             {"isSignature" in item && item.isSignature && (
                               <Badge className="bg-primary text-primary-foreground">
                                 <Star className="w-3 h-3 mr-1" />

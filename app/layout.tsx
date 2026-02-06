@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloatingButton } from "@/components/layout/WhatsAppFloatingButton";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { RESTAURANT } from "@/lib/constants";
 
 const geistSans = Geist({
@@ -68,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -80,6 +81,7 @@ export default function RootLayout({
           Langsung ke konten utama
         </a>
         <Header />
+        <ScrollToTop />
         <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppFloatingButton />
