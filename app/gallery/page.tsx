@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GALLERY_IMAGES } from "@/lib/constants";
@@ -144,6 +144,9 @@ export default function GalleryPage() {
       {/* Lightbox Dialog */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-7xl p-0 overflow-hidden bg-black/95 border-0">
+          <DialogTitle className="sr-only">
+            {selectedImage ? selectedImage.alt : "Galeri Foto"}
+          </DialogTitle>
           {selectedImage && (
             <div className="relative">
               {/* Close button - with background for visibility */}
