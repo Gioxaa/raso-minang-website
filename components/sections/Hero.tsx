@@ -126,17 +126,13 @@ export function Hero() {
             className="absolute bottom-8 left-1/2 -translate-x-1/2"
             aria-hidden="true"
           >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2"
-            >
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center pt-2">
               <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1.5 h-3 bg-white/60 rounded-full"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1.5 h-2 bg-white/60 rounded-full"
               />
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </div>
