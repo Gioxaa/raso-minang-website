@@ -14,12 +14,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-foreground text-background overflow-hidden">
       {/* Main Footer */}
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
-          <div className="col-span-2 md:col-span-2 lg:col-span-1">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-2xl">🍛</span>
@@ -100,7 +100,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-background/70 text-sm">
+                <span className="text-background/70 text-sm break-words">
                   {RESTAURANT.address.full}
                 </span>
               </li>
@@ -117,7 +117,7 @@ export function Footer() {
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <a
                   href={`mailto:${RESTAURANT.email}`}
-                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                  className="text-background/70 hover:text-primary transition-colors text-sm break-all"
                 >
                   {RESTAURANT.email}
                 </a>
