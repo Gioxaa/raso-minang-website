@@ -13,6 +13,9 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  
+  // Only use transparent header style on homepage
+  const isHomepage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,9 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  // Use scrolled (glass) style if: actually scrolled OR not on homepage
+  const useScrolledStyle = isScrolled || !isHomepage;
 
   return (
     <motion.header
@@ -35,7 +41,7 @@ export function Header() {
       <div 
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none"
         style={{ 
-          opacity: isScrolled ? 0 : 1,
+          opacity: useScrolledStyle ? 0 : 1,
           transition: 'opacity 500ms cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       />
@@ -44,9 +50,9 @@ export function Header() {
       <div 
         className="absolute inset-0 glass pointer-events-none"
         style={{ 
-          opacity: isScrolled ? 1 : 0,
+          opacity: useScrolledStyle ? 1 : 0,
           transition: 'opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1)',
-          boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none'
+          boxShadow: useScrolledStyle ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none'
         }}
       />
       
@@ -54,7 +60,7 @@ export function Header() {
       <div 
         className="absolute bottom-0 left-0 right-0 h-px bg-border/50 pointer-events-none"
         style={{ 
-          opacity: isScrolled ? 1 : 0,
+          opacity: useScrolledStyle ? 1 : 0,
           transition: 'opacity 500ms cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       />
@@ -71,7 +77,7 @@ export function Header() {
               <div 
                 className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-primary flex items-center justify-center"
                 style={{ 
-                  boxShadow: isScrolled ? '0 2px 8px rgba(0,0,0,0.15)' : '0 4px 20px rgba(0,0,0,0.3)',
+                  boxShadow: useScrolledStyle ? '0 2px 8px rgba(0,0,0,0.15)' : '0 4px 20px rgba(0,0,0,0.3)',
                   transition: 'box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               >
@@ -81,7 +87,7 @@ export function Header() {
                 <h1 
                   className="text-lg md:text-xl font-bold"
                   style={{ 
-                    color: isScrolled ? 'var(--foreground)' : 'white',
+                    color: useScrolledStyle ? 'var(--foreground)' : 'white',
                     transition: 'color 500ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
@@ -90,7 +96,7 @@ export function Header() {
                 <p 
                   className="text-xs"
                   style={{ 
-                    color: isScrolled ? 'var(--muted-foreground)' : 'rgba(255,255,255,0.7)',
+                    color: useScrolledStyle ? 'var(--muted-foreground)' : 'rgba(255,255,255,0.7)',
                     transition: 'color 500ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
@@ -111,10 +117,10 @@ export function Header() {
                   className="px-4 py-2 text-sm font-medium rounded-lg hover:scale-[1.02] active:scale-[0.98]"
                   style={{ 
                     color: isActive 
-                      ? (isScrolled ? 'var(--primary)' : 'white')
-                      : (isScrolled ? 'var(--foreground)' : 'rgba(255,255,255,0.9)'),
+                      ? (useScrolledStyle ? 'var(--primary)' : 'white')
+                      : (useScrolledStyle ? 'var(--foreground)' : 'rgba(255,255,255,0.9)'),
                     backgroundColor: isActive 
-                      ? (isScrolled ? 'hsl(var(--primary) / 0.1)' : 'rgba(255,255,255,0.15)')
+                      ? (useScrolledStyle ? 'hsl(var(--primary) / 0.1)' : 'rgba(255,255,255,0.15)')
                       : 'transparent',
                     transition: 'color 500ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
@@ -131,9 +137,9 @@ export function Header() {
               href={`tel:${RESTAURANT.phone}`}
               className="inline-flex items-center justify-center h-9 px-4 text-sm font-medium rounded-md border hover:scale-[1.02] active:scale-[0.98]"
               style={{
-                borderColor: isScrolled ? 'hsl(var(--primary) / 0.5)' : 'rgba(255,255,255,0.5)',
-                color: isScrolled ? 'var(--foreground)' : 'white',
-                backgroundColor: isScrolled ? 'transparent' : 'rgba(255,255,255,0.05)',
+                borderColor: useScrolledStyle ? 'hsl(var(--primary) / 0.5)' : 'rgba(255,255,255,0.5)',
+                color: useScrolledStyle ? 'var(--foreground)' : 'white',
+                backgroundColor: useScrolledStyle ? 'transparent' : 'rgba(255,255,255,0.05)',
                 transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -152,7 +158,7 @@ export function Header() {
                 className="inline-flex items-center justify-center w-10 h-10 rounded-md"
                 aria-label="Buka menu navigasi"
                 style={{
-                  color: isScrolled ? 'var(--foreground)' : 'white',
+                  color: useScrolledStyle ? 'var(--foreground)' : 'white',
                   transition: 'color 500ms cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               >
